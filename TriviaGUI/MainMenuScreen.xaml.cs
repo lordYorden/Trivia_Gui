@@ -10,19 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TriviaGUI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainMenuScreen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainMenuScreen : Window
     {
-        public MainWindow()
+        private string _uname;
+        public MainMenuScreen(string uname)
         {
             InitializeComponent();
+            _uname = uname;
+            Debug.Text = uname;
         }
     }
 }

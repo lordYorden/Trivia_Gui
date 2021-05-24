@@ -1,0 +1,35 @@
+﻿<Window x:Class="TriviaGUI.MainMenuScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TriviaGUI"
+        mc:Ignorable="d"
+        Title="MainMenuScreen" Height="500" Width="600" Background="Black">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="ImgLogo" Grid.Column="1" Margin="10" Source="TriviaLogo.png" ></Image>
+        <Button x:Name="BJoinRoom" Grid.Row ="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" FontSize="24" Content="Join Room" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BCreateRoom" Grid.Row ="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Create Room" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BMyStats" Grid.Row ="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="My Stats" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BBestScore" Grid.Row ="4" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Best Scores" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BSignout" Grid.Row ="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Signout" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <TextBox x:Name="Debug" Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontWeight="Bold"/>
+    </Grid>
+</Window>
