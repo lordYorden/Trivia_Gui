@@ -26,5 +26,13 @@ namespace TriviaGUI
             _uname = uname;
             Debug.Text = uname;
         }
+
+        private void BMyStats_Click(object sender, RoutedEventArgs e)
+        {
+            PersonalStatisticsScreen personalStatisticsScreen = new PersonalStatisticsScreen();
+            Visibility = Visibility.Hidden;
+            personalStatisticsScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
     }
 }

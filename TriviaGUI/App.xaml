@@ -63,6 +63,15 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FF0B8DFF"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
 
     </Application.Resources>
 </Application>

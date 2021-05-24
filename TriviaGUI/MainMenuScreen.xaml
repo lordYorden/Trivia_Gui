@@ -27,7 +27,7 @@
         <Image x:Name="ImgLogo" Grid.Column="1" Margin="10" Source="TriviaLogo.png" ></Image>
         <Button x:Name="BJoinRoom" Grid.Row ="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" FontSize="24" Content="Join Room" Style="{DynamicResource BlueButtonStyle}"/>
         <Button x:Name="BCreateRoom" Grid.Row ="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Create Room" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
-        <Button x:Name="BMyStats" Grid.Row ="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="My Stats" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BMyStats" Grid.Row ="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="My Stats" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BMyStats_Click"/>
         <Button x:Name="BBestScore" Grid.Row ="4" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Best Scores" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
         <Button x:Name="BSignout" Grid.Row ="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Signout" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
         <TextBox x:Name="Debug" Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontWeight="Bold"/>
