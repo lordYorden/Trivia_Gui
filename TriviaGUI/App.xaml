@@ -71,6 +71,7 @@
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="Foreground" Value="#FF0B8DFF"/>
             <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="fonts/#04b 30"/>
         </Style>
 
     </Application.Resources>

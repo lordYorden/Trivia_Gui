@@ -34,5 +34,13 @@ namespace TriviaGUI
             personalStatisticsScreen.ShowDialog();
             Visibility = Visibility.Visible;
         }
+
+        private void BJoinRoom_Click(object sender, RoutedEventArgs e)
+        {
+            RoomSelectionScreen roomSelectionScreen = new RoomSelectionScreen();
+            Visibility = Visibility.Hidden;
+            roomSelectionScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
     }
 }

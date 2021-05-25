@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGUI"
         mc:Ignorable="d"
-        Title="Personal Statistics Screen" Height="500" Width="600" Background="Black">
+        Title="Personal Statistics Screen" Height="500" Width="870" Background="Black">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -21,12 +21,12 @@
             <TextBlock HorizontalAlignment="Left" Grid.Row="1" Text="Times Played:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTimePlayed" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBlock HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}" FontWeight="Bold" FontSize="24"/>
             <TextBlock x:Name="DAvgAswerTime" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <TextBlock HorizontalAlignment="Left" Grid.Row="3" Text="Total Answers:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTotalAnswers" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
