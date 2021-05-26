@@ -4,10 +4,10 @@
              xmlns:local="clr-namespace:TriviaGUI"
              StartupUri="LoginScreen.xaml">
     <Application.Resources>
-        <ImageBrush x:Key="Button_Green_Hover" ImageSource="ButtonGreenHover.png"/>
-        <ImageBrush x:Key="Button_Green" ImageSource="ButtonGreen.png"/>
-        <ImageBrush x:Key="Button_Blue_Hover" ImageSource="ButtonBlueHover.png"/>
-        <ImageBrush x:Key="Button_Blue" ImageSource="ButtonBlue.png"/>
+        <ImageBrush x:Key="Button_Green_Hover" ImageSource="assets/ButtonGreenHover.png"/>
+        <ImageBrush x:Key="Button_Green" ImageSource="assets/ButtonGreen.png"/>
+        <ImageBrush x:Key="Button_Blue_Hover" ImageSource="assets/ButtonBlueHover.png"/>
+        <ImageBrush x:Key="Button_Blue" ImageSource="assets/ButtonBlue.png"/>
 
         <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="45"/>
