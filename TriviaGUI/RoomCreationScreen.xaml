@@ -33,7 +33,7 @@
             <TextBlock Margin="10" VerticalAlignment="Center" Text="Time Per Question:" FontSize="24" Style="{DynamicResource TextStyle}" FontWeight="Bold"/>
             <TextBox Margin="10" VerticalAlignment="Bottom" Width="295" MaxWidth="295" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
         </StackPanel>
-        <Button x:Name="BTest" HorizontalAlignment="Center" Margin="10" FontSize="24" Content="Create Room" Padding="20,0,20,0" Grid.Row="5" Style="{DynamicResource BlueButtonStyle}" Click="BTest_Click"/>
+        <Button HorizontalAlignment="Center" Margin="10" FontSize="24" Content="Create Room" Padding="20,0,20,0" Grid.Row="5" Style="{DynamicResource BlueButtonStyle}"/>
 
     </Grid>
 </Window>
