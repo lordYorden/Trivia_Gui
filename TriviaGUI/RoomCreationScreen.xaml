@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="RoomCreationSample.png" Stretch="Uniform" />
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/RoomCreationLogo.png" Stretch="Uniform" />
         <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
             <TextBlock Margin="10" VerticalAlignment="Center" Text="Room Name:" FontSize="24" Style="{DynamicResource TextStyle}"/>
             <TextBox Margin="10" VerticalAlignment="Bottom" Width="450" MaxWidth="450" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>

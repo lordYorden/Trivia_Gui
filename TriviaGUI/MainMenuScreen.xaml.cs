@@ -50,5 +50,13 @@ namespace TriviaGUI
             roomCreationScreen.ShowDialog();
             Visibility = Visibility.Visible;
         }
+
+        private void BBestScore_Click(object sender, RoutedEventArgs e)
+        {
+            BestScoresScreen bestScoresScreen = new BestScoresScreen();
+            Visibility = Visibility.Hidden;
+            bestScoresScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
     }
 }

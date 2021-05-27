@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="RoomSelectionSample.png" Stretch="Uniform" />
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/RoomSelectionLogo.png" Stretch="Uniform" />
         <ScrollViewer Grid.ColumnSpan="2" Grid.Row="1">
             <StackPanel x:Name="DisplayRooms" Orientation="Vertical" Grid.Row="1">
             </StackPanel>

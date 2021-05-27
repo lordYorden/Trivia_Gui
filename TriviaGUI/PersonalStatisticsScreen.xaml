@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Image HorizontalAlignment="Center" Margin="10" Source="PersonalStatististicsLogo.png" Stretch="Uniform" />
+        <Image HorizontalAlignment="Center" Margin="10" Source="assets/PersonalStatististicsLogo.png" Stretch="Uniform" />
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <TextBlock HorizontalAlignment="Left" Grid.Row="1" Text="Times Played:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTimePlayed" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>

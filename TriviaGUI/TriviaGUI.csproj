@@ -82,6 +82,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BestScoresScreen.xaml.cs">
+      <DependentUpon>BestScoresScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuScreen.xaml.cs">
       <DependentUpon>MainMenuScreen.xaml</DependentUpon>
     </Compile>
@@ -97,6 +100,10 @@
     <Compile Include="SignupScreen.xaml.cs">
       <DependentUpon>SignupScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="BestScoresScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -192,13 +199,16 @@
     <Resource Include="assets\ButtonBlueHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PersonalStatististicsLogo.png" />
+    <Resource Include="assets\PersonalStatististicsLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="RoomSelectionSample.png" />
+    <Resource Include="assets\RoomSelectionLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="RoomCreationSample.png" />
+    <Resource Include="assets\RoomCreationLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\BestScoresLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
