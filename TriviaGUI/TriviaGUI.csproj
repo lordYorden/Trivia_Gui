@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -82,12 +85,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes.cs" />
     <Compile Include="MainMenuScreen.xaml.cs">
       <DependentUpon>MainMenuScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="PersonalStatisticsScreen.xaml.cs">
       <DependentUpon>PersonalStatisticsScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Serializer.cs" />
     <Compile Include="SignupScreen.xaml.cs">
       <DependentUpon>SignupScreen.xaml</DependentUpon>
     </Compile>
