@@ -53,4 +53,5 @@ namespace TriviaGUI
         public int QuestionCount { get => questionCount; set => questionCount = value; }
         public int AnswerTimeOut { get => answerTimeOut; set => answerTimeOut = value; }
     }
+    
 }
