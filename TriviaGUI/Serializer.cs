@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TriviaGUI
 {
     public static class Serializer
     {
 
-        public static string serializeResponse(int code, Requests data)
+        public static string serializeResponse(int code, JObject data)
         {
             string toReturn = "";
             string json = "";
