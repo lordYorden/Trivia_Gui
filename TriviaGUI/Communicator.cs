@@ -9,6 +9,25 @@ using Newtonsoft.Json.Linq;
 
 namespace TriviaGUI
 {
+    enum RequestId
+    {
+        MT_RESPONSE_OK = 0,
+        MT_LOGIN_REQUEST = 1,
+        MT_SIGNUP_REQUEST = 2,
+        MT_SIGNOUT_REQUEST = 3,
+        MT_GET_ROOMS_REQUEST = 4,
+        MT_GET_PLAYERS_IN_ROOM_REQUEST = 5,
+        MT_GET_STATISTICS = 6,
+        MT_GET_HIGHSCORES = 7,
+        MT_JOIN_ROOM = 8,
+        MT_CREATE_ROOM = 9,
+        MT_CLOSE_ROOM = 10,
+        MT_START_GAME = 11,
+        MT_LEAVE_ROOM = 12,
+        MT_GET_ROOM_STATE = 13,
+        MT_EXIT = 99,
+        MT_ERROR = 99
+    };
     class Communicator
     {
         private NetworkStream clientStream;
@@ -31,12 +50,8 @@ namespace TriviaGUI
                 {"password",password }
             };
 
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse(1, o));
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LOGIN_REQUEST, o));
+            return sendToServer(buffer);
 
 
         }
@@ -48,58 +63,40 @@ namespace TriviaGUI
                 {"password",password },
                 {"mail",email }
             };
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse(2, o));
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_SIGNUP_REQUEST, o));
+            return sendToServer(buffer);
         }
-        public string getRooms()
+        public string getRoomsRequest()
         {
-            byte[] buffer = new ASCIIEncoding().GetBytes("4"); //sending code only
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
+            return sendToServer(buffer);
         }
-        public string joinRoom(int roomId)
+        public string joinRoomRequest(int roomId)
         {
             JObject o = new JObject
             {
                 {"roomID",roomId }
             };
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse(7,o)); 
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_JOIN_ROOM, o));
+            return sendToServer(buffer);
         }
-        public string getPlayers(int roomId)
+        public string getPlayersRequest(int roomId)
         {
             JObject o = new JObject
             {
                 {"roomID",roomId }
             };
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse(5, o));
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_PLAYERS_IN_ROOM_REQUEST, o));
+            return sendToServer(buffer);
         }
-        public string signOut()
+        public string signOutRequest()
         {
-            byte[] buffer = new ASCIIEncoding().GetBytes("3"); //sending code only
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_SIGNOUT_REQUEST, o)); //sending code only
+            return sendToServer(buffer);
         }
-        public string createRoom(string roomName, int maxUsers, int qCount, int answerTime)
+        public string createRoomRequest(string roomName, int maxUsers, int qCount, int answerTime)
         {
             JObject o = new JObject
             {
@@ -110,7 +107,48 @@ namespace TriviaGUI
 
 
             };
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse(8, o));
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_CREATE_ROOM, o));
+            return sendToServer(buffer);
+        }
+        public string highScoreRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_HIGHSCORES, o)); //sending code only
+            return sendToServer(buffer);
+
+        }
+        public string getStatisitcs()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_STATISTICS, o)); //sending code only
+            return sendToServer(buffer);
+        }
+        public string closeRoomRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_CLOSE_ROOM, o)); //sending code only
+            return sendToServer(buffer);
+        }
+        public string startGameRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_START_GAME, o)); //sending code only
+            return sendToServer(buffer);
+        }
+        public string leaveRoomRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LEAVE_ROOM, o)); //sending code only
+            return sendToServer(buffer);
+        }
+        public string getRoomStateRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
+            return sendToServer(buffer);
+        }
+        private string sendToServer(byte[] buffer)
+        {
             clientStream.Write(buffer, 0, buffer.Length);
             clientStream.Flush();
             buffer = new byte[4096];
@@ -118,4 +156,5 @@ namespace TriviaGUI
             return System.Text.Encoding.UTF8.GetString(buffer);
         }
     }
+    
 }
