@@ -20,10 +20,12 @@ namespace TriviaGUI
     public partial class MainMenuScreen : Window
     {
         private string _uname;
-        public MainMenuScreen(string uname)
+        private  Communicator _coms;
+        public MainMenuScreen(string uname,  Communicator communicator)
         {
             InitializeComponent();
             _uname = uname;
+            _coms = communicator;
             Debug.Text = uname;
         }
 

@@ -20,24 +20,37 @@ namespace TriviaGUI
     /// </summary>
     public partial class LoginScreen : Window
     {
+        private Communicator _coms;
         public LoginScreen()
         {
+            this._coms = new Communicator();
             InitializeComponent();
         }
 
         private void BLogin_Click(object sender, RoutedEventArgs e)
         {
             string uname = IUsername.Text;
-            //login attempt here
-            MainMenuScreen mainMenuScreen = new MainMenuScreen(uname);
-            Visibility = Visibility.Hidden;
-            mainMenuScreen.ShowDialog();
-            this.Close();
+            string password = IPassword.Password;
+            messageInfo info =_coms.loginRequest(uname, password);
+           
+            if(info.Code == 1 )
+            {
+                MessageBox.Show(info.Json.ToString());
+            }
+            else
+            {
+                MainMenuScreen mainMenuScreen = new MainMenuScreen(uname, _coms);
+                Visibility = Visibility.Hidden;
+                mainMenuScreen.ShowDialog();
+                _coms.signOutRequest();
+                this.Close();
+            }
+            
         }
 
         private void BSignup_Click(object sender, RoutedEventArgs e)
         {
-            SignupScreen signupScreen = new SignupScreen();
+            SignupScreen signupScreen = new SignupScreen(_coms);
             Visibility = Visibility.Hidden;
             signupScreen.ShowDialog();
             Visibility = Visibility.Visible;

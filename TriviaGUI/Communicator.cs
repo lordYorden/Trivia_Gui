@@ -30,14 +30,14 @@ namespace TriviaGUI
         MT_ERROR = 99
     };
 
-    class messageInfo 
+    public class messageInfo 
     {
         private int code;
         private JObject json;
 
         public messageInfo(String message)
         {
-            Code = (int) message[0];
+            Code = Convert.ToInt32(message[0])-48;
             int len = Convert.ToInt32(message.Substring(1, 4));
             string jsonStr = message.Substring(5, len);
             Json = JObject.Parse(jsonStr);
@@ -60,7 +60,7 @@ namespace TriviaGUI
 
 
         }
-        public string loginRequest(string name, string password)
+        public messageInfo loginRequest(string name, string password)
         {
             JObject o = new JObject
             {
@@ -69,11 +69,12 @@ namespace TriviaGUI
             };
 
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LOGIN_REQUEST, o));
-            return sendToServer(buffer);
+           
+           return new messageInfo(sendToServer(buffer));
 
 
         }
-        public string signUpRequest(string name, string password,string email)
+        public messageInfo signUpRequest(string name, string password,string email)
         {
             JObject o = new JObject
             {
@@ -82,39 +83,39 @@ namespace TriviaGUI
                 {"mail",email }
             };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_SIGNUP_REQUEST, o));
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string getRoomsRequest()
+        public messageInfo getRoomsRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string joinRoomRequest(int roomId)
+        public messageInfo joinRoomRequest(int roomId)
         {
             JObject o = new JObject
             {
                 {"roomID",roomId }
             };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_JOIN_ROOM, o));
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string getPlayersRequest(int roomId)
+        public messageInfo getPlayersRequest(int roomId)
         {
             JObject o = new JObject
             {
                 {"roomID",roomId }
             };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_PLAYERS_IN_ROOM_REQUEST, o));
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string signOutRequest()
+        public messageInfo signOutRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_SIGNOUT_REQUEST, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string createRoomRequest(string roomName, int maxUsers, int qCount, int answerTime)
+        public messageInfo createRoomRequest(string roomName, int maxUsers, int qCount, int answerTime)
         {
             JObject o = new JObject
             {
@@ -126,44 +127,44 @@ namespace TriviaGUI
 
             };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_CREATE_ROOM, o));
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string highScoreRequest()
+        public messageInfo highScoreRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_HIGHSCORES, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
 
         }
-        public string getStatisitcs()
+        public messageInfo getStatisitcs()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_STATISTICS, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string closeRoomRequest()
+        public messageInfo closeRoomRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_CLOSE_ROOM, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string startGameRequest()
+        public messageInfo startGameRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_START_GAME, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string leaveRoomRequest()
+        public messageInfo leaveRoomRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LEAVE_ROOM, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
-        public string getRoomStateRequest()
+        public messageInfo getRoomStateRequest()
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
-            return sendToServer(buffer);
+            return new messageInfo(sendToServer(buffer));
         }
         private string sendToServer(byte[] buffer)
         {

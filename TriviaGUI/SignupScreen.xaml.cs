@@ -19,8 +19,10 @@ namespace TriviaGUI
     /// </summary>
     public partial class SignupScreen : Window
     {
-        public SignupScreen()
+        private Communicator _coms;
+        public SignupScreen(Communicator communicator)
         {
+            _coms = communicator;
             InitializeComponent();
         }
 
@@ -32,11 +34,21 @@ namespace TriviaGUI
         private void BSignup_Click(object sender, RoutedEventArgs e)
         {
             string uname = IUsername.Text;
-            //check signup
-            MainMenuScreen mainMenuScreen = new MainMenuScreen(uname);
-            Visibility = Visibility.Hidden;
-            mainMenuScreen.ShowDialog();
-            this.Close();
+            string password = IPassword.Password;
+            string mail = IEmail.Text;
+            messageInfo info = _coms.signUpRequest(uname, password, mail);
+            if (info.Code == 1)
+            {
+                MessageBox.Show(info.Json.ToString());
+            }
+            else
+            {
+                MainMenuScreen mainMenuScreen = new MainMenuScreen(uname, _coms);
+                Visibility = Visibility.Hidden;
+                mainMenuScreen.ShowDialog();
+                this.Close();
+            }
+            
         }
     }
 }

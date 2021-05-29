@@ -20,10 +20,19 @@ namespace TriviaGUI
     public partial class RoomSelectionScreen : Window
     {
         private String test;
+        private Communicator _coms;
         public RoomSelectionScreen()
         {
+
             InitializeComponent();
             test = "Faild";
+            messageInfo info= _coms.getRoomsRequest();
+            MessageBox.Show(info.Json.ToString());
+            string[] rooms = info.Json.ToString().Split(',');
+            foreach (var word in rooms)
+            {
+                CreateRoom(word);
+            }
         }
 
         private void BTest_Click(object sender, RoutedEventArgs e)
