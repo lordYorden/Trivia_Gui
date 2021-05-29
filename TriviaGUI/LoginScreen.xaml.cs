@@ -40,7 +40,7 @@ namespace TriviaGUI
             SignupScreen signupScreen = new SignupScreen();
             Visibility = Visibility.Hidden;
             signupScreen.ShowDialog();
-            this.Close();
+            Visibility = Visibility.Visible;
         }
     }
 }
