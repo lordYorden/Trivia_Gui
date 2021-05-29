@@ -37,11 +37,14 @@ namespace TriviaGUI
 
         public messageInfo(String message)
         {
-            code = (int) message[0];
+            Code = (int) message[0];
             int len = Convert.ToInt32(message.Substring(1, 4));
             string jsonStr = message.Substring(5, len);
-            json = JObject.Parse(jsonStr);
+            Json = JObject.Parse(jsonStr);
         }
+
+        public int Code { get => code; set => code = value; }
+        public JObject Json { get => json; set => json = value; }
     }
     public class Communicator
     {
