@@ -32,7 +32,7 @@ namespace TriviaGUI
             MainMenuScreen mainMenuScreen = new MainMenuScreen(uname);
             Visibility = Visibility.Hidden;
             mainMenuScreen.ShowDialog();
-            Visibility = Visibility.Visible;
+            this.Close();
         }
 
         private void BSignup_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,7 @@ namespace TriviaGUI
             SignupScreen signupScreen = new SignupScreen();
             Visibility = Visibility.Hidden;
             signupScreen.ShowDialog();
-            Visibility = Visibility.Visible;
+            this.Close();
         }
     }
 }

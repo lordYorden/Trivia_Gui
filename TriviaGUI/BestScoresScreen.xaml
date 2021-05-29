@@ -1,0 +1,31 @@
+﻿<Window x:Class="TriviaGUI.BestScoresScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TriviaGUI"
+        mc:Ignorable="d"
+        Title="BestScoresScreen" Height="500" Width="600" Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/BestScoresLogo.png" Stretch="Uniform" />
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Text="Name:" Grid.Row="1" Style="{DynamicResource TextStyle}"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Text="Score:" Grid.Column="1" Grid.Row="1" Style="{DynamicResource TextStyle}"/>
+        <StackPanel x:Name="DisplayTop5Names" Orientation="Vertical" Grid.Row="2">
+        </StackPanel>
+        <StackPanel x:Name="DisplayTop5Scores" Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+        </StackPanel>
+        <Button x:Name="BTest" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" FontSize="24" Content="Click Me" Padding="20,0,20,0" Grid.Row="3" Style="{DynamicResource BlueButtonStyle}" Click="BTest_Click"/>
+    </Grid>
+</Window>

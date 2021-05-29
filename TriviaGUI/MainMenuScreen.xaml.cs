@@ -34,5 +34,29 @@ namespace TriviaGUI
             personalStatisticsScreen.ShowDialog();
             Visibility = Visibility.Visible;
         }
+
+        private void BJoinRoom_Click(object sender, RoutedEventArgs e)
+        {
+            RoomSelectionScreen roomSelectionScreen = new RoomSelectionScreen();
+            Visibility = Visibility.Hidden;
+            roomSelectionScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
+
+        private void BCreateRoom_Click(object sender, RoutedEventArgs e)
+        {
+            RoomCreationScreen roomCreationScreen = new RoomCreationScreen();
+            Visibility = Visibility.Hidden;
+            roomCreationScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
+
+        private void BBestScore_Click(object sender, RoutedEventArgs e)
+        {
+            BestScoresScreen bestScoresScreen = new BestScoresScreen();
+            Visibility = Visibility.Hidden;
+            bestScoresScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
     }
 }

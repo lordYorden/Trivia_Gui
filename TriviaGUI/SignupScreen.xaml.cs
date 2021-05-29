@@ -36,8 +36,7 @@ namespace TriviaGUI
             MainMenuScreen mainMenuScreen = new MainMenuScreen(uname);
             Visibility = Visibility.Hidden;
             mainMenuScreen.ShowDialog();
-            Visibility = Visibility.Visible;
-
+            this.Close();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.5.0.0.2012\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.5.0.0.2012\build\Xamarin.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -87,6 +87,9 @@
     </ApplicationDefinition>
     <Compile Include="Classes.cs" />
     <Compile Include="Communicator.cs" />
+    <Compile Include="BestScoresScreen.xaml.cs">
+      <DependentUpon>BestScoresScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuScreen.xaml.cs">
       <DependentUpon>MainMenuScreen.xaml</DependentUpon>
     </Compile>
@@ -94,9 +97,19 @@
       <DependentUpon>PersonalStatisticsScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Serializer.cs" />
+    <Compile Include="RoomCreationScreen.xaml.cs">
+      <DependentUpon>RoomCreationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoomSelectionScreen.xaml.cs">
+      <DependentUpon>RoomSelectionScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SignupScreen.xaml.cs">
       <DependentUpon>SignupScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="BestScoresScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +127,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PersonalStatisticsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomCreationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomSelectionScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +161,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="fonts\8bit.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -162,34 +184,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TriviaLogo.png" />
+    <Resource Include="assets\TriviaLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonBlue.png" />
+    <Resource Include="assets\ButtonBlue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonYellow.png" />
+    <Resource Include="assets\ButtonYellow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonGreen.png" />
+    <Resource Include="assets\ButtonGreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonRed.png" />
+    <Resource Include="assets\ButtonRed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonGreenHover.png" />
+    <Resource Include="assets\ButtonGreenHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonBlueHover.png" />
+    <Resource Include="assets\ButtonBlueHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="StatististicsSample.png" />
+    <Resource Include="assets\PersonalStatististicsLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="StatististicsSample2.png" />
+    <Resource Include="assets\RoomSelectionLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="StatististicsSample3.png" />
+    <Resource Include="assets\RoomCreationLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\BestScoresLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
