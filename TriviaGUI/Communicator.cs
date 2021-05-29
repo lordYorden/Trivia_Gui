@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace TriviaGUI
 {
@@ -28,7 +29,21 @@ namespace TriviaGUI
         MT_EXIT = 99,
         MT_ERROR = 99
     };
-    class Communicator
+
+    class messageInfo 
+    {
+        private int code;
+        private JObject json;
+
+        public messageInfo(String message)
+        {
+            code = (int) message[0];
+            int len = Convert.ToInt32(message.Substring(1, 4));
+            string jsonStr = message.Substring(5, len);
+            json = JObject.Parse(jsonStr);
+        }
+    }
+    public class Communicator
     {
         private NetworkStream clientStream;
         private TcpClient client;
