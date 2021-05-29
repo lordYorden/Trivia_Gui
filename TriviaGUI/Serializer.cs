@@ -23,6 +23,10 @@ namespace TriviaGUI
         public static string helperString(int code, string str)
         {
             string toReturn = code.ToString();
+            if(toReturn.Length == 1)
+            {
+                toReturn = "0" + toReturn;
+            }
             int size = str.Length;
             string sizeStr = fillZeros(size.ToString());
             toReturn += sizeStr;
