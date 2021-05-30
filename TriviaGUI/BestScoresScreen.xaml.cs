@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace TriviaGUI
 {
@@ -19,16 +21,28 @@ namespace TriviaGUI
     /// </summary>
     public partial class BestScoresScreen : Window
     {
-        public BestScoresScreen()
+        private Communicator _coms;
+        public BestScoresScreen(Communicator communicator)
         {
             InitializeComponent();
+            _coms = communicator;
         }
 
         private void BTest_Click(object sender, RoutedEventArgs e)
         {
-            string s = "1000";
-            string n = "yarden";
-            AddScore(n, s);
+
+            messageInfo info = _coms.highScoreRequest();
+            JToken info1 = info.Json["Highscores"];
+            foreach(var word in info1.ToString().Split('-'))
+            {
+                if(word != "")
+                {
+                    string[] words = word.Split('=');
+                    AddScore(words[0], words[1]);
+                }
+                
+            }
+            
         }
         private void AddScore(String name, String score) 
         {

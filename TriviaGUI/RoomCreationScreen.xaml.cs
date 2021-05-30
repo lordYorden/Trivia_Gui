@@ -19,9 +19,20 @@ namespace TriviaGUI
     /// </summary>
     public partial class RoomCreationScreen : Window
     {
-        public RoomCreationScreen()
+        private Communicator _coms;
+        public RoomCreationScreen(Communicator communicator)
         {
+            
             InitializeComponent();
+            _coms = communicator;
+           
         }
+
+        private void BCreate_Click(object sender, RoutedEventArgs e)
+        {
+            messageInfo info = _coms.createRoomRequest(IRoomName.Text, Int32.Parse(IMaxUsers.Text), Int32.Parse(IQuestionCount.Text), Int32.Parse(IQuestionTime.Text));
+            MessageBox.Show(info.Json.ToString());
+        }
+        
     }
 }

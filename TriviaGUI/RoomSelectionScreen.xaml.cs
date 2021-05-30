@@ -34,8 +34,12 @@ namespace TriviaGUI
             
             foreach (var word in info1.ToString().Split('-'))
             {
-                MessageBox.Show(word);
-                DisplayRooms.Children.Add(CreateRoom(word));
+                if (word != "")
+                {
+                    MessageBox.Show(word);
+                    DisplayRooms.Children.Add(CreateRoom(word));
+                }
+                
             }
         }
 

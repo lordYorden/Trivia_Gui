@@ -47,7 +47,7 @@ namespace TriviaGUI
 
         private void BCreateRoom_Click(object sender, RoutedEventArgs e)
         {
-            RoomCreationScreen roomCreationScreen = new RoomCreationScreen();
+            RoomCreationScreen roomCreationScreen = new RoomCreationScreen(_coms);
             Visibility = Visibility.Hidden;
             roomCreationScreen.ShowDialog();
             Visibility = Visibility.Visible;
@@ -55,7 +55,7 @@ namespace TriviaGUI
 
         private void BBestScore_Click(object sender, RoutedEventArgs e)
         {
-            BestScoresScreen bestScoresScreen = new BestScoresScreen();
+            BestScoresScreen bestScoresScreen = new BestScoresScreen(_coms);
             Visibility = Visibility.Hidden;
             bestScoresScreen.ShowDialog();
             Visibility = Visibility.Visible;
