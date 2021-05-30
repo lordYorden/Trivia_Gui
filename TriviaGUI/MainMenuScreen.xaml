@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGUI"
         mc:Ignorable="d"
-        Title="MainMenuScreen" Height="500" Width="600" Background="Black">
+        Title="MainMenuScreen" Height="500" Width="600" Background="Black"
+        Closing="MainMenuScreen_Closing">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -29,7 +30,7 @@
         <Button x:Name="BCreateRoom" Grid.Row ="2" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Create Room" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BCreateRoom_Click"/>
         <Button x:Name="BMyStats" Grid.Row ="3" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="My Stats" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BMyStats_Click"/>
         <Button x:Name="BBestScore" Grid.Row ="4" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Best Scores" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BBestScore_Click"/>
-        <Button x:Name="BSignout" Grid.Row ="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Signout" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BSignout" Grid.Row ="5" Grid.Column="1" Margin="10" VerticalAlignment="Center" Content="Signout" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BSignout_Click"/>
         <TextBox x:Name="Debug" Grid.Row="6" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontWeight="Bold"/>
     </Grid>
 </Window>

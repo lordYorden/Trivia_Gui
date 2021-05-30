@@ -44,6 +44,7 @@ namespace TriviaGUI
             else
             {
                 MainMenuScreen mainMenuScreen = new MainMenuScreen(uname, _coms);
+                mainMenuScreen.Owner = this;
                 Visibility = Visibility.Hidden;
                 mainMenuScreen.ShowDialog();
                 this.Close();
