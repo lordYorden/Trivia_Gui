@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TriviaGUI"
-             StartupUri="LoginScreen.xaml">
+             StartupUri="LoginScreen.xaml"
+             ShutdownMode="OnMainWindowClose">
     <Application.Resources>
         <ImageBrush x:Key="Button_Green_Hover" ImageSource="assets/ButtonGreenHover.png"/>
         <ImageBrush x:Key="Button_Green" ImageSource="assets/ButtonGreen.png"/>

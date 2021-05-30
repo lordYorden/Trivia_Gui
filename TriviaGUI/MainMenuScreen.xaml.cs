@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -59,6 +60,17 @@ namespace TriviaGUI
             Visibility = Visibility.Hidden;
             bestScoresScreen.ShowDialog();
             Visibility = Visibility.Visible;
+        }
+
+        void MainMenuScreen_Closing(object sender, CancelEventArgs e)
+        {
+            _coms.signOutRequest();
+            this.Owner.Visibility = Visibility.Visible;
+        }
+
+        private void BSignout_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

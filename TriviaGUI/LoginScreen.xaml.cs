@@ -23,8 +23,12 @@ namespace TriviaGUI
         private Communicator _coms;
         public LoginScreen()
         {
-            this._coms = new Communicator();
             InitializeComponent();
+            this._coms = new Communicator();
+        }
+        ~LoginScreen()
+        {
+            _coms.signOutRequest();
         }
 
         private void BLogin_Click(object sender, RoutedEventArgs e)
@@ -40,10 +44,9 @@ namespace TriviaGUI
             else
             {
                 MainMenuScreen mainMenuScreen = new MainMenuScreen(uname, _coms);
+                mainMenuScreen.Owner = this;
                 Visibility = Visibility.Hidden;
                 mainMenuScreen.ShowDialog();
-                _coms.signOutRequest();
-                this.Close();
             }
             
         }
