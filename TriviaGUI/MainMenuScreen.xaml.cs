@@ -39,7 +39,7 @@ namespace TriviaGUI
 
         private void BJoinRoom_Click(object sender, RoutedEventArgs e)
         {
-            RoomSelectionScreen roomSelectionScreen = new RoomSelectionScreen();
+            RoomSelectionScreen roomSelectionScreen = new RoomSelectionScreen(_coms);
             Visibility = Visibility.Hidden;
             roomSelectionScreen.ShowDialog();
             Visibility = Visibility.Visible;

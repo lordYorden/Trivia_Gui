@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace TriviaGUI
 {
@@ -21,17 +22,20 @@ namespace TriviaGUI
     {
         private String test;
         private Communicator _coms;
-        public RoomSelectionScreen()
+        public RoomSelectionScreen(Communicator communicator)
         {
 
             InitializeComponent();
             test = "Faild";
+            _coms = communicator;
             messageInfo info= _coms.getRoomsRequest();
             MessageBox.Show(info.Json.ToString());
-            string[] rooms = info.Json.ToString().Split(',');
-            foreach (var word in rooms)
+            JToken info1 = info.Json["Rooms"];
+            
+            foreach (var word in info1.ToString().Split('-'))
             {
-                CreateRoom(word);
+                MessageBox.Show(word);
+                DisplayRooms.Children.Add(CreateRoom(word));
             }
         }
 
@@ -60,7 +64,7 @@ namespace TriviaGUI
             bJoinRoom.Style = blueStyle;
             bJoinRoom.Click += JoinRoom_Click;
 
-            lRoomName.Text = "This A realy Long Name";
+            lRoomName.Text = roomName;
             lRoomName.Margin = new Thickness(10);
             Style textStyle = this.FindResource("TextStyle") as Style;
             lRoomName.Style = textStyle;

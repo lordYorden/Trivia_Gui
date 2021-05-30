@@ -88,7 +88,7 @@ namespace TriviaGUI
         public messageInfo getRoomsRequest()
         {
             JObject o = new JObject { };
-            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOMS_REQUEST, o)); //sending code only
             return new messageInfo(sendToServer(buffer));
         }
         public messageInfo joinRoomRequest(int roomId)
