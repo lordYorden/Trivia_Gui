@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGUI"
         mc:Ignorable="d"
-        Title="WaitingRoomScreen" Height="500" Width="870" Background="Black">
+        Title="WaitingRoomScreen" Height="500" Width="870" Background="Black"
+        Closing="WaitingRoomScreen_Closing">
     <Grid>
 
         <Grid.RowDefinitions>

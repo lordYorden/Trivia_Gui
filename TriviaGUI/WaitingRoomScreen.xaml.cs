@@ -34,6 +34,8 @@ namespace TriviaGUI
             _isAdmin = isAdmin;
             _roomName = roomName;
             _roomID = roomID;
+
+            LRoomName.Text = roomName;
             if (!_isAdmin)
                 BStart.Visibility = Visibility.Hidden;
 
@@ -62,6 +64,11 @@ namespace TriviaGUI
             _currPlayers = players.Count();
             updatePlayersCount();
             LPlayers.Text = "Players: " + String.Join(", ", _players);
+        }
+
+        private void WaitingRoomScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }
