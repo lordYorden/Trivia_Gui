@@ -34,7 +34,7 @@ namespace TriviaGUI
             _isAdmin = isAdmin;
             _metadata = metadata;
 
-            LRoomName.Text = "Room Name:" + _metadata.RoomName;
+            LRoomName.Text = "Room Name: " + _metadata.RoomName;
             messageInfo info = _coms.getPlayersRequest(metadata.Id);
             MessageBox.Show(info.Json.ToString());
 
