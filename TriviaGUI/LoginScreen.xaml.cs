@@ -58,9 +58,9 @@ namespace TriviaGUI
         private void BSignup_Click(object sender, RoutedEventArgs e)
         {
             SignupScreen signupScreen = new SignupScreen(_coms);
+            signupScreen.Owner = this;
             Visibility = Visibility.Hidden;
             signupScreen.ShowDialog();
-            Visibility = Visibility.Visible;
         }
     }
 }

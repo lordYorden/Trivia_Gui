@@ -47,9 +47,13 @@ namespace TriviaGUI
                 mainMenuScreen.Owner = this;
                 Visibility = Visibility.Hidden;
                 mainMenuScreen.ShowDialog();
-                this.Close();
             }
             
+        }
+
+        private void SignupScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Owner.Visibility = Visibility.Visible;
         }
     }
 }
