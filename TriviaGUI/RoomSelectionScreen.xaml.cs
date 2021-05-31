@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json.Linq;
+using System.Threading;
+using System.ComponentModel;
 
 namespace TriviaGUI
 {
@@ -22,19 +24,50 @@ namespace TriviaGUI
     {
         private Dictionary<string, RoomData> _roomNameToID;
         private Communicator _coms;
+        private BackgroundWorker timer = new BackgroundWorker();
         public RoomSelectionScreen(Communicator communicator)
         {
             InitializeComponent();
+            timer.DoWork += Timer_DoWork;
+            timer.ProgressChanged += Timer_ProgressChanged;
+            timer.WorkerSupportsCancellation = true;
+            timer.WorkerReportsProgress = true;
+
             _coms = communicator;
             _roomNameToID = new Dictionary<string, RoomData>();
+            timer.RunWorkerAsync();
+        }
 
+        private void Timer_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            updateRooms();
+        }
+
+        private void Timer_DoWork(object sender, DoWorkEventArgs e)
+        {
+            while (true)
+            {
+                timer.ReportProgress(0);
+                System.Threading.Thread.Sleep(3000);
+
+                if (timer.CancellationPending)
+                {
+                    Console.WriteLine("room is closeing....");
+                    e.Cancel = true;
+                    break;
+                }
+            }
+        }
+
+        private void updateRooms()
+        {
             messageInfo info = _coms.getRoomsRequest();
-/*            MessageBox.Show(info.Json.ToString());*/
+            /* MessageBox.Show(info.Json.ToString());*/
             JToken rooms = info.Json["Rooms"];
             string roomsData = rooms.ToString();
             roomsData = roomsData.Substring(1, roomsData.Length - 2);
             /*MessageBox.Show(roomsData);*/
-            
+
             foreach (String roomData in roomsData.Split('-'))
             {
                 if (roomData != "")
@@ -50,15 +83,15 @@ namespace TriviaGUI
 
                         RoomData metadata = new RoomData(roomName, roomID, maxPlayers, timePerQuestion, questionCount);
 
-                        MessageBox.Show($"RoomId: {roomID} RoomName: {roomName}");
+                        /*MessageBox.Show($"RoomId: {roomID} RoomName: {roomName}");*/
                         DisplayRooms.Children.Add(CreateRoom(roomName, metadata));
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(e.Message);
+                        /*MessageBox.Show(e.Message);*/
                     }
                 }
-                
+
             }
         }
 
@@ -110,6 +143,11 @@ namespace TriviaGUI
             Visibility = Visibility.Hidden;
             waitRoom.ShowDialog();
             Visibility = Visibility.Visible;
+        }
+
+        private void RoomSelectionScreen_Closing(object sender, CancelEventArgs e)
+        {
+            timer.CancelAsync();
         }
     }
 }
