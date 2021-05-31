@@ -25,11 +25,12 @@ namespace TriviaGUI
         private bool _isAdmin;
         private int _roomID;
         private string _roomName;
-        public WaitingRoomScreen(string roomName, int roomID, bool isAdmin)
+        private Communicator _coms;
+        public WaitingRoomScreen(string roomName, int roomID, bool isAdmin, Communicator communicator)
         {
             InitializeComponent();
             _currPlayers = 0;
-
+            _coms = communicator;
             _isAdmin = isAdmin;
             _roomName = roomName;
             _roomID = roomID;

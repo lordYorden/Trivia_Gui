@@ -98,6 +98,8 @@ namespace TriviaGUI
             int roomID = _roomNameToID[lroomName.Text];
             string roomName = lroomName.Text;
             MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");
+            Visibility = Visibility.Hidden;
+            WaitingRoomScreen waitRoom = new WaitingRoomScreen();
         }
     }
 }
