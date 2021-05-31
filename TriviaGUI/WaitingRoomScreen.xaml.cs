@@ -64,5 +64,10 @@ namespace TriviaGUI
             updatePlayersCount();
             LPlayers.Text = "Players: " + String.Join(", ", _players);
         }
+
+        private void WaitingRoomScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }
