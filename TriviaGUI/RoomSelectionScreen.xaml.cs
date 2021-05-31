@@ -138,10 +138,18 @@ namespace TriviaGUI
             int roomID = metadata.Id;
             string roomName = lroomName.Text;
             /*MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");*/
+            messageInfo info = _coms.joinRoomRequest(roomID);
+            if(info.Json["status"].ToString() == "0")
+            {
+                WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false, _coms);
+                Visibility = Visibility.Hidden;
+                waitRoom.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("failed to join room");
+            }
             
-            WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false,_coms);
-            Visibility = Visibility.Hidden;
-            waitRoom.ShowDialog();
             
         }
 
