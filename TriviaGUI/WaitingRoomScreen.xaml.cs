@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace TriviaGUI
 {
@@ -19,23 +21,26 @@ namespace TriviaGUI
     /// </summary>
     public partial class WaitingRoomScreen : Window
     {
-        private int _maxPlayers;
         private int _currPlayers;
         private List<string> _players;
         private bool _isAdmin;
-        private int _roomID;
-        private string _roomName;
+        private RoomData _metadata;
         private Communicator _coms;
-        public WaitingRoomScreen(string roomName, int roomID, bool isAdmin, Communicator communicator)
+        public WaitingRoomScreen(RoomData metadata, bool isAdmin, Communicator communicator)
         {
             InitializeComponent();
             _currPlayers = 0;
             _coms = communicator;
             _isAdmin = isAdmin;
-            _roomName = roomName;
-            _roomID = roomID;
+            _metadata = metadata;
 
-            LRoomName.Text = roomName;
+            LRoomName.Text = "Room Name:" + _metadata.RoomName;
+            messageInfo info = _coms.getPlayersRequest(metadata.Id);
+            MessageBox.Show(info.Json.ToString());
+
+            List<string> players = info.Json["Players"].ToString().Split('-').ToList();
+            updatePlayers(players);
+
             if (!_isAdmin)
                 BStart.Visibility = Visibility.Hidden;
 
@@ -43,12 +48,12 @@ namespace TriviaGUI
 
         private void updatePlayersCount()
         {
-            LplayerCount.Text = $"{_currPlayers}/{_maxPlayers}";
+            LplayerCount.Text = $"{_currPlayers}/{_metadata.MaxUsers}";
         }
 
         public void setMaxPlayerCount(int max)
         {
-            _maxPlayers = max;
+            _metadata.MaxUsers = max;
             updatePlayersCount();
         }
         public void setcurrPlayerCount(int curr)

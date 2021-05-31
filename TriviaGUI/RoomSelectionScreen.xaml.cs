@@ -20,13 +20,13 @@ namespace TriviaGUI
     /// </summary>
     public partial class RoomSelectionScreen : Window
     {
-        private Dictionary<string, int> _roomNameToID;
+        private Dictionary<string, RoomData> _roomNameToID;
         private Communicator _coms;
         public RoomSelectionScreen(Communicator communicator)
         {
             InitializeComponent();
             _coms = communicator;
-            _roomNameToID = new Dictionary<string, int>();
+            _roomNameToID = new Dictionary<string, RoomData>();
 
             messageInfo info = _coms.getRoomsRequest();
 /*            MessageBox.Show(info.Json.ToString());*/
@@ -44,8 +44,14 @@ namespace TriviaGUI
                         JObject room = JObject.Parse(roomData);
                         int roomID = Convert.ToInt32(room["id"].ToString());
                         string roomName = room["name"].ToString();
+                        int timePerQuestion = Convert.ToInt32(room["timePerQuestion"].ToString());
+                        int maxPlayers = Convert.ToInt32(room["maxPlayers"].ToString());
+                        int questionCount = Convert.ToInt32(room["questionCount"].ToString());
+
+                        RoomData metadata = new RoomData(roomName, roomID, maxPlayers, timePerQuestion, questionCount);
+
                         MessageBox.Show($"RoomId: {roomID} RoomName: {roomName}");
-                        DisplayRooms.Children.Add(CreateRoom(roomName, roomID));
+                        DisplayRooms.Children.Add(CreateRoom(roomName, metadata));
                     }
                     catch (Exception e)
                     {
@@ -58,12 +64,12 @@ namespace TriviaGUI
 
         private void BTest_Click(object sender, RoutedEventArgs e)
         {
-            string roomName = "This A realy Long Name"; //Max room name length 22 cherecters
-            DisplayRooms.Children.Add(CreateRoom(roomName, 15));
+            /*string roomName = "This A realy Long Name"; //Max room name length 22 cherecters
+            DisplayRooms.Children.Add(CreateRoom(roomName, ));*/
         }
-        private StackPanel CreateRoom(string roomName ,int roomId)
+        private StackPanel CreateRoom(string roomName , RoomData metadata)
         {
-            _roomNameToID.Add(roomName, roomId);
+            _roomNameToID.Add(roomName, metadata);
 
             //the object created
             //<StackPanel x:Name="Room" Orientation="Horizontal">
@@ -95,11 +101,12 @@ namespace TriviaGUI
             Button bsender = sender as Button;
             StackPanel room = bsender.Parent as StackPanel;
             TextBlock lroomName = room.Children[0] as TextBlock;
-            int roomID = _roomNameToID[lroomName.Text];
+            RoomData metadata = _roomNameToID[lroomName.Text];
+            int roomID = metadata.Id;
             string roomName = lroomName.Text;
-            MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");
+            /*MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");*/
             
-            WaitingRoomScreen waitRoom = new WaitingRoomScreen(roomName,roomID,false,_coms);
+            WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false,_coms);
             Visibility = Visibility.Hidden;
             waitRoom.ShowDialog();
             Visibility = Visibility.Visible;
