@@ -139,6 +139,7 @@ namespace TriviaGUI
             string roomName = lroomName.Text;
             /*MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");*/
             messageInfo info = _coms.joinRoomRequest(roomID);
+            timer.CancelAsync();
             if(info.Json["status"].ToString() == "0")
             {
                 WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false, _coms);
