@@ -27,6 +27,7 @@ namespace TriviaGUI
         private bool _isAdmin;
         private RoomData _metadata;
         private bool _hasGameBegun;
+        private bool _isRoomClosed;
         private Communicator _coms;
         private BackgroundWorker timer = new BackgroundWorker();
         public WaitingRoomScreen(RoomData metadata, bool isAdmin, Communicator communicator)
@@ -38,6 +39,7 @@ namespace TriviaGUI
             timer.WorkerReportsProgress = true;
 
             _currPlayers = 0;
+            _isRoomClosed = false;
             _coms = communicator;
             _isAdmin = isAdmin;
             _metadata = metadata;
@@ -58,15 +60,15 @@ namespace TriviaGUI
         {
             while (true)
             {
-                timer.ReportProgress(0);
-                System.Threading.Thread.Sleep(3000);
-
                 if (timer.CancellationPending)
                 {
                     Console.WriteLine("room is closeing....");
                     e.Cancel = true;
                     break;
                 }
+
+                timer.ReportProgress(0);
+                System.Threading.Thread.Sleep(3000);
             }
         }
 
@@ -110,7 +112,10 @@ namespace TriviaGUI
                 List<string> players = info.Json["players"].ToString().Split('-').ToList();
                 if (status == 1)
                 {
+                    _isRoomClosed = true;
+                    timer.CancelAsync();
                     this.Close();
+
                 }
                 updatePlayers(players);
             }
@@ -122,11 +127,16 @@ namespace TriviaGUI
 
         private void WaitingRoomScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            timer.CancelAsync();
             if (_isAdmin)
+            {
+                timer.CancelAsync();
                 _coms.closeRoomRequest();
-            else
+            }
+            else if (!_isRoomClosed)
+            {
+                timer.CancelAsync();
                 _coms.leaveRoomRequest();
+            }
         }
     }
 }

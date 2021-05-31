@@ -47,15 +47,15 @@ namespace TriviaGUI
         {
             while (true)
             {
-                timer.ReportProgress(0);
-                System.Threading.Thread.Sleep(3000);
-
                 if (timer.CancellationPending)
                 {
                     Console.WriteLine("room is closeing....");
                     e.Cancel = true;
                     break;
                 }
+                
+                timer.ReportProgress(0);
+                System.Threading.Thread.Sleep(3000);
             }
         }
 
