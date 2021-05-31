@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TriviaGUI"
         mc:Ignorable="d"
-        Title="Room Selection Screen" Height="500" Width="700" Background="Black">
+        Title="Room Selection Screen" Height="500" Width="700" Background="Black"
+        Closing="RoomSelectionScreen_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
