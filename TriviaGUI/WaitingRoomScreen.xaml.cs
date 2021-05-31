@@ -68,7 +68,10 @@ namespace TriviaGUI
 
         private void WaitingRoomScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            if (_isAdmin)
+                _coms.closeRoomRequest();
+            else
+                _coms.leaveRoomRequest();
         }
     }
 }
