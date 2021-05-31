@@ -20,24 +20,37 @@ namespace TriviaGUI
     /// </summary>
     public partial class RoomSelectionScreen : Window
     {
-        private String test;
+        private Dictionary<string, int> _roomNameToID;
         private Communicator _coms;
         public RoomSelectionScreen(Communicator communicator)
         {
-
             InitializeComponent();
-            test = "Faild";
             _coms = communicator;
-            messageInfo info= _coms.getRoomsRequest();
+            _roomNameToID = new Dictionary<string, int>();
+
+            messageInfo info = _coms.getRoomsRequest();
             MessageBox.Show(info.Json.ToString());
-            JToken info1 = info.Json["Rooms"];
+            JToken rooms = info.Json["Rooms"];
+            string roomsData = rooms.ToString();
+            roomsData = roomsData.Substring(1, roomsData.Length - 2);
+            MessageBox.Show(roomsData);
             
-            foreach (var word in info1.ToString().Split('-'))
+            foreach (String roomData in roomsData.Split('-'))
             {
-                if (word != "")
+                if (roomData != "")
                 {
-                    MessageBox.Show(word);
-                    DisplayRooms.Children.Add(CreateRoom(word));
+                    try
+                    {
+                        JObject room = JObject.Parse(roomData);
+                        int roomID = Convert.ToInt32(room["id"].ToString());
+                        string roomName = room["name"].ToString();
+                        MessageBox.Show($"RoomId: {roomID} RoomName: {roomName}");
+                        DisplayRooms.Children.Add(CreateRoom(roomName, roomID));
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
                 }
                 
             }
@@ -46,11 +59,12 @@ namespace TriviaGUI
         private void BTest_Click(object sender, RoutedEventArgs e)
         {
             string roomName = "This A realy Long Name"; //Max room name length 22 cherecters
-            DisplayRooms.Children.Add(CreateRoom(roomName));
-            
+            DisplayRooms.Children.Add(CreateRoom(roomName, 15));
         }
-        private StackPanel CreateRoom(String roomName)
+        private StackPanel CreateRoom(string roomName ,int roomId)
         {
+            _roomNameToID.Add(roomName, roomId);
+
             //the object created
             //<StackPanel x:Name="Room" Orientation="Horizontal">
             //    <TextBlock Text="Name" Margin="10" Style="{DynamicResource TextStyle}"/>
@@ -78,9 +92,11 @@ namespace TriviaGUI
         }
         private void JoinRoom_Click(object sender, RoutedEventArgs e)
         {
-            test = "Working";
-            MessageBox.Show(test);
-            test = "Faild";
+            Button bsender = sender as Button;
+            StackPanel room = bsender.Parent as StackPanel;
+            TextBlock lroomName = room.Children[0] as TextBlock;
+            int roomID = _roomNameToID[lroomName.Text];
+            MessageBox.Show($"Room Name: {lroomName.Text}, RoomID: {roomID}");
         }
     }
 }
