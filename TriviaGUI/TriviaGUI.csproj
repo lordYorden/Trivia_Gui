@@ -223,6 +223,9 @@
   <ItemGroup>
     <Resource Include="assets\BestScoresLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\WaitingRoomLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

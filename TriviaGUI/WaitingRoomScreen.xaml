@@ -10,16 +10,20 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/RoomSelectionLogo.png" Stretch="Uniform" />
-        <TextBlock x:Name="LplayerCount" HorizontalAlignment="Right" Grid.Row="1" Margin="10" FontSize="30" Text="11/15" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
-        <TextBlock x:Name="LAdminName" Grid.Row="2" Margin="10" FontSize="30" FontWeight="ExtraLight"  Text="Admin: Yarden" TextWrapping="WrapWithOverflow" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
-        <TextBlock x:Name="LPlayers" Grid.Row="3" Margin="10" FontSize="30" FontWeight="ExtraLight" LineHeight="50" Text="Players: yarden, guy, yarden, guy, yarden, guy, yarden, guy, yarden, guy,yarden, guy" TextWrapping="WrapWithOverflow" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
-        <Button x:Name="BStart" Grid.Row="4" HorizontalAlignment="Center" Padding="20,0,20,0" Margin="10" Content="Start Game" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/WaitingRoomLogo.png" Stretch="Uniform" />
+        <TextBlock x:Name="LplayerCount" HorizontalAlignment="Right" Grid.Row="1" Margin="10" FontSize="30" Text="0/30" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
+        <TextBlock x:Name="LRoomName" Grid.Row="2" Margin="10" FontSize="30" FontWeight="ExtraLight" Text="Room Name: " VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
+        <TextBlock x:Name="LAdminName" Grid.Row="3" Margin="10" FontSize="30" FontWeight="ExtraLight"  Text="Admin: " VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
+        <ScrollViewer Grid.Row="4">
+            <TextBlock x:Name="LPlayers" Margin="10" FontSize="30" FontWeight="ExtraLight" LineHeight="45" Text="Players: " TextWrapping="Wrap" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
+        </ScrollViewer>
+        <Button x:Name="BStart" Grid.Row="5" HorizontalAlignment="Center" Padding="20,0,20,0" Margin="10" Content="Start Game" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
     </Grid>
 </Window>

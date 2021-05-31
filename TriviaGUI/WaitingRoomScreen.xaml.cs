@@ -19,44 +19,48 @@ namespace TriviaGUI
     /// </summary>
     public partial class WaitingRoomScreen : Window
     {
-        private int maxPlayers;
-        private int currPlayers;
-        private List<string> players;
-        private bool isAdmin;
-        public WaitingRoomScreen(bool isAdmin)
+        private int _maxPlayers;
+        private int _currPlayers;
+        private List<string> _players;
+        private bool _isAdmin;
+        private int _roomID;
+        private string _roomName;
+        public WaitingRoomScreen(string roomName, int roomID, bool isAdmin)
         {
             InitializeComponent();
-            currPlayers = 0;
+            _currPlayers = 0;
 
-            this.isAdmin = isAdmin;
-            if (!isAdmin)
+            _isAdmin = isAdmin;
+            _roomName = roomName;
+            _roomID = roomID;
+            if (!_isAdmin)
                 BStart.Visibility = Visibility.Hidden;
 
         }
 
         private void updatePlayersCount()
         {
-            LplayerCount.Text = $"{currPlayers}/{maxPlayers}";
+            LplayerCount.Text = $"{_currPlayers}/{_maxPlayers}";
         }
 
         public void setMaxPlayerCount(int max)
         {
-            maxPlayers = max;
+            _maxPlayers = max;
             updatePlayersCount();
         }
         public void setcurrPlayerCount(int curr)
         {
-            currPlayers = curr;
+            _currPlayers = curr;
             updatePlayersCount();
         }
 
         public void updatePlayers(List<string> players)
         {
-            this.players = players;
+            _players = players;
             LAdminName.Text = "Admin: " + players.ElementAt(0);
-            currPlayers = players.Count();
+            _currPlayers = players.Count();
             updatePlayersCount();
-            LPlayers.Text = "Players: " + String.Join(", ", this.players);
+            LPlayers.Text = "Players: " + String.Join(", ", _players);
         }
     }
 }
