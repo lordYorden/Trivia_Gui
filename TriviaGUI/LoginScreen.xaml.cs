@@ -24,11 +24,15 @@ namespace TriviaGUI
         public LoginScreen()
         {
             InitializeComponent();
-            this._coms = new Communicator();
-        }
-        ~LoginScreen()
-        {
-            _coms.signOutRequest();
+            try
+            {
+                this._coms = new Communicator();
+            }
+            catch
+            {
+                MessageBox.Show("Unable To Connect To the server...Try Again Later!");
+                this.Close();
+            }
         }
 
         private void BLogin_Click(object sender, RoutedEventArgs e)

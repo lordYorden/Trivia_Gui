@@ -29,11 +29,11 @@ namespace TriviaGUI
             _roomNameToID = new Dictionary<string, int>();
 
             messageInfo info = _coms.getRoomsRequest();
-            MessageBox.Show(info.Json.ToString());
+/*            MessageBox.Show(info.Json.ToString());*/
             JToken rooms = info.Json["Rooms"];
             string roomsData = rooms.ToString();
             roomsData = roomsData.Substring(1, roomsData.Length - 2);
-            MessageBox.Show(roomsData);
+            /*MessageBox.Show(roomsData);*/
             
             foreach (String roomData in roomsData.Split('-'))
             {
@@ -96,7 +96,8 @@ namespace TriviaGUI
             StackPanel room = bsender.Parent as StackPanel;
             TextBlock lroomName = room.Children[0] as TextBlock;
             int roomID = _roomNameToID[lroomName.Text];
-            MessageBox.Show($"Room Name: {lroomName.Text}, RoomID: {roomID}");
+            string roomName = lroomName.Text;
+            MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");
         }
     }
 }
