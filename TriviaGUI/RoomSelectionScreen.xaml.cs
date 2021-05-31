@@ -109,7 +109,7 @@ namespace TriviaGUI
             WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false,_coms);
             Visibility = Visibility.Hidden;
             waitRoom.ShowDialog();
-            Visibility = Visibility.Visible;
+            
         }
     }
 }

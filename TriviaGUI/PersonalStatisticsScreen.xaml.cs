@@ -19,9 +19,18 @@ namespace TriviaGUI
     /// </summary>
     public partial class PersonalStatisticsScreen : Window
     {
-        public PersonalStatisticsScreen()
+        private Communicator _coms;
+        public PersonalStatisticsScreen(Communicator communicator)
         {
             InitializeComponent();
+            _coms = communicator;
+            messageInfo info = _coms.getStatisitcs();
+            string[] stats = info.Json["Statistics"].ToString().Split('-');
+            IAVGTime.Text += stats[0];
+            ITotalCorrectAnswers.Text += stats[1];
+            ITotalAnswers.Text += stats[2];
+            ITimesPlayed.Text += stats[3];
+
         }
     }
 }

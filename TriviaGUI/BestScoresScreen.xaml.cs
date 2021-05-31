@@ -26,22 +26,23 @@ namespace TriviaGUI
         {
             InitializeComponent();
             _coms = communicator;
+            messageInfo info = _coms.highScoreRequest();
+            JToken info1 = info.Json["Highscores"];
+            foreach (var word in info1.ToString().Split('-'))
+            {
+                if (word != "")
+                {
+                    string[] words = word.Split('=');
+                    AddScore(words[0], words[1]);
+                }
+
+            }
         }
 
         private void BTest_Click(object sender, RoutedEventArgs e)
         {
 
-            messageInfo info = _coms.highScoreRequest();
-            JToken info1 = info.Json["Highscores"];
-            foreach(var word in info1.ToString().Split('-'))
-            {
-                if(word != "")
-                {
-                    string[] words = word.Split('=');
-                    AddScore(words[0], words[1]);
-                }
-                
-            }
+            
             
         }
         private void AddScore(String name, String score) 

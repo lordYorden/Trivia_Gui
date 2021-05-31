@@ -32,7 +32,7 @@ namespace TriviaGUI
 
         private void BMyStats_Click(object sender, RoutedEventArgs e)
         {
-            PersonalStatisticsScreen personalStatisticsScreen = new PersonalStatisticsScreen();
+            PersonalStatisticsScreen personalStatisticsScreen = new PersonalStatisticsScreen(_coms);
             Visibility = Visibility.Hidden;
             personalStatisticsScreen.ShowDialog();
             Visibility = Visibility.Visible;

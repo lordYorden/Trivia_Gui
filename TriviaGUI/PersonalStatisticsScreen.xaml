@@ -18,22 +18,22 @@
 
         <Image HorizontalAlignment="Center" Margin="10" Source="assets/PersonalStatististicsLogo.png" Stretch="Uniform" />
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Text="Times Played:" Margin="10" Style="{DynamicResource TextStyle}"/>
+            <TextBlock x:Name="ITimesPlayed" HorizontalAlignment="Left" Grid.Row="1" Text="Times Played:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTimePlayed" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBlock HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}" FontWeight="Bold" FontSize="24"/>
+            <TextBlock x:Name="IAVGTime" HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}" FontWeight="Bold" FontSize="24"/>
             <TextBlock x:Name="DAvgAswerTime" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBlock HorizontalAlignment="Left" Grid.Row="3" Text="Total Answers:" Margin="10" Style="{DynamicResource TextStyle}"/>
+            <TextBlock x:Name="ITotalAnswers" HorizontalAlignment="Left" Grid.Row="3" Text="Total Answers:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTotalAnswers" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <TextBlock HorizontalAlignment="Left" Grid.Row="4" Text="Number Of Correct Answers:" Margin="10" Style="{DynamicResource TextStyle}"/>
+            <TextBlock x:Name="ITotalCorrectAnswers" HorizontalAlignment="Left" Grid.Row="4" Text="Number Of Correct Answers:" Margin="10" Style="{DynamicResource TextStyle}"/>
             <TextBlock x:Name="DTotalCorectAnswers" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
 
