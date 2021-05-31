@@ -33,6 +33,8 @@ namespace TriviaGUI
             _isAdmin = isAdmin;
             _roomName = roomName;
             _roomID = roomID;
+
+            LRoomName.Text = roomName;
             if (!_isAdmin)
                 BStart.Visibility = Visibility.Hidden;
 
