@@ -30,12 +30,21 @@ namespace TriviaGUI
 
         private void BCreate_Click(object sender, RoutedEventArgs e)
         {
-            messageInfo info = _coms.createRoomRequest(IRoomName.Text, Int32.Parse(IMaxUsers.Text), Int32.Parse(IQuestionCount.Text), Int32.Parse(IQuestionTime.Text));
-            int id = Int32.Parse(info.Json["status"].ToString());
-            RoomData roomInfo = new RoomData(IRoomName.Text, id,Int32.Parse(IMaxUsers.Text), Int32.Parse(IQuestionTime.Text), Int32.Parse(IQuestionCount.Text));
-            WaitingRoomScreen waitRoom = new WaitingRoomScreen(roomInfo, true, _coms);
-            Visibility = Visibility.Hidden;
-            waitRoom.ShowDialog();
+            try
+            {
+                messageInfo info = _coms.createRoomRequest(IRoomName.Text, Int32.Parse(IMaxUsers.Text), Int32.Parse(IQuestionCount.Text), Int32.Parse(IQuestionTime.Text));
+                int id = Int32.Parse(info.Json["status"].ToString());
+                RoomData roomInfo = new RoomData(IRoomName.Text, id, Int32.Parse(IMaxUsers.Text), Int32.Parse(IQuestionTime.Text), Int32.Parse(IQuestionCount.Text));
+                WaitingRoomScreen waitRoom = new WaitingRoomScreen(roomInfo, true, _coms);
+                Visibility = Visibility.Hidden;
+                waitRoom.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Credentials");
+            }
+            
+            
             
         }
         
