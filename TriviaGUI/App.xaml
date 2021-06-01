@@ -2,12 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TriviaGUI"
-             StartupUri="LoginScreen.xaml">
+             StartupUri="LoginScreen.xaml"
+             ShutdownMode="OnMainWindowClose">
     <Application.Resources>
-        <ImageBrush x:Key="Button_Green_Hover" ImageSource="ButtonGreenHover.png"/>
-        <ImageBrush x:Key="Button_Green" ImageSource="ButtonGreen.png"/>
-        <ImageBrush x:Key="Button_Blue_Hover" ImageSource="ButtonBlueHover.png"/>
-        <ImageBrush x:Key="Button_Blue" ImageSource="ButtonBlue.png"/>
+        <ImageBrush x:Key="Button_Green_Hover" ImageSource="assets/ButtonGreenHover.png"/>
+        <ImageBrush x:Key="Button_Green" ImageSource="assets/ButtonGreen.png"/>
+        <ImageBrush x:Key="Button_Blue_Hover" ImageSource="assets/ButtonBlueHover.png"/>
+        <ImageBrush x:Key="Button_Blue" ImageSource="assets/ButtonBlue.png"/>
 
         <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="45"/>
@@ -62,6 +63,16 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+        <Style x:Key="TextStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="#FF0B8DFF"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="fonts/#04b 30"/>
         </Style>
 
     </Application.Resources>
