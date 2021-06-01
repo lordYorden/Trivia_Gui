@@ -53,6 +53,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -82,12 +85,34 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes.cs" />
+    <Compile Include="Communicator.cs" />
+    <Compile Include="BestScoresScreen.xaml.cs">
+      <DependentUpon>BestScoresScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuScreen.xaml.cs">
       <DependentUpon>MainMenuScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalStatisticsScreen.xaml.cs">
+      <DependentUpon>PersonalStatisticsScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Serializer.cs" />
+    <Compile Include="RoomCreationScreen.xaml.cs">
+      <DependentUpon>RoomCreationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoomSelectionScreen.xaml.cs">
+      <DependentUpon>RoomSelectionScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="SignupScreen.xaml.cs">
       <DependentUpon>SignupScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WaitingRoomScreen.xaml.cs">
+      <DependentUpon>WaitingRoomScreen.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BestScoresScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginScreen.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,7 +129,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PersonalStatisticsScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomCreationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RoomSelectionScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SignupScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WaitingRoomScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,6 +168,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="fonts\8bit.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -149,25 +191,40 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TriviaLogo.png" />
+    <Resource Include="assets\TriviaLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonBlue.png" />
+    <Resource Include="assets\ButtonBlue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonYellow.png" />
+    <Resource Include="assets\ButtonYellow.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonGreen.png" />
+    <Resource Include="assets\ButtonGreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonRed.png" />
+    <Resource Include="assets\ButtonRed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonGreenHover.png" />
+    <Resource Include="assets\ButtonGreenHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ButtonBlueHover.png" />
+    <Resource Include="assets\ButtonBlueHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\PersonalStatististicsLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\RoomSelectionLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\RoomCreationLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\BestScoresLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\WaitingRoomLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
