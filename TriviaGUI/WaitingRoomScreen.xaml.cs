@@ -138,5 +138,21 @@ namespace TriviaGUI
                 _coms.leaveRoomRequest();
             }
         }
+
+        private void BStart_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isAdmin)
+            {
+                timer.CancelAsync();
+                GameScreen gameScreen = new GameScreen(_metadata, _coms);
+                Visibility = Visibility.Hidden;
+                gameScreen.ShowDialog();
+                this.Close();
+            }
+            else 
+            {
+                MessageBox.Show("Your not the admin");
+            }
+        }
     }
 }

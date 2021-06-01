@@ -9,6 +9,10 @@
         <ImageBrush x:Key="Button_Green" ImageSource="assets/ButtonGreen.png"/>
         <ImageBrush x:Key="Button_Blue_Hover" ImageSource="assets/ButtonBlueHover.png"/>
         <ImageBrush x:Key="Button_Blue" ImageSource="assets/ButtonBlue.png"/>
+        <ImageBrush x:Key="Button_Red" ImageSource="assets/ButtonRed.png"/>
+        <ImageBrush x:Key="Button_Red_Hover" ImageSource="assets/ButtonRedHover.png"/>
+        <ImageBrush x:Key="Button_Yellow" ImageSource="assets/ButtonYellow.png"/>
+        <ImageBrush x:Key="Button_Yellow_Hover" ImageSource="assets/ButtonYellowHover.png"/>
 
         <Style x:Key="GreenButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Height" Value="45"/>
@@ -31,6 +35,62 @@
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Green}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="RedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Red}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Red_Hover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Red}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="YellowButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Yellow}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Yellow_Hover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button_Yellow}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

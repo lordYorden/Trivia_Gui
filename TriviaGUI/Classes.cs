@@ -29,4 +29,22 @@ namespace TriviaGUI
         public int TimePerQuestion { get => timePerQuestion; set => timePerQuestion = value; }
         public int QuestionCount { get => questionCount; set => questionCount = value; }
     }
+
+    public class QuestionData 
+    {
+        private string question;
+        private string correctAnswer;
+        List<string> otherAnswers;
+
+        public QuestionData(string question, string correctAnswer, List<string> otherAnswers)
+        {
+            this.question = question;
+            this.correctAnswer = correctAnswer;
+            this.otherAnswers = otherAnswers;
+        }
+
+        public string Question { get => question; set => question = value; }
+        public string CorrectAnswer { get => correctAnswer; set => correctAnswer = value; }
+        public List<string> OtherAnswers { get => otherAnswers; set => otherAnswers = value; }
+    }
 }
