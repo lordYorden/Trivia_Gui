@@ -25,12 +25,18 @@ namespace TriviaGUI
             InitializeComponent();
             _coms = communicator;
             messageInfo info = _coms.getStatisitcs();
-            string[] stats = info.Json["Statistics"].ToString().Split('-');
-            IAVGTime.Text += stats[0];
-            ITotalCorrectAnswers.Text += stats[1];
-            ITotalAnswers.Text += stats[2];
-            ITimesPlayed.Text += stats[3];
-
+            if (info.Code == 1)
+            {
+                MessageBox.Show(info.Json.ToString());
+            }
+            else
+            {
+                string[] stats = info.Json["Statistics"].ToString().Split('-');
+                IAVGTime.Text += stats[0];
+                ITotalCorrectAnswers.Text += stats[1];
+                ITotalAnswers.Text += stats[2];
+                ITimesPlayed.Text += stats[3];
+            }
         }
     }
 }
