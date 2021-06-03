@@ -140,7 +140,7 @@ namespace TriviaGUI
             /*MessageBox.Show($"Room Name: {roomName}, RoomID: {roomID}");*/
             messageInfo info = _coms.joinRoomRequest(roomID);
             timer.CancelAsync();
-            if(info.Json["status"].ToString() == "0")
+            if(info.Code == 0)
             {
                 WaitingRoomScreen waitRoom = new WaitingRoomScreen(metadata, false, _coms);
                 Visibility = Visibility.Hidden;
@@ -148,9 +148,9 @@ namespace TriviaGUI
             }
             else
             {
-                MessageBox.Show("failed to join room");
+                string message = info.Json.ToString();
+                MessageBox.Show(message);
             }
-            
             
         }
 
