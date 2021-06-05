@@ -155,6 +155,7 @@ namespace TriviaGUI
             if (_isAdmin)
             {
                 timer.CancelAsync();
+                _coms.startGameRequest();
                 GameScreen gameScreen = new GameScreen(_metadata, _coms);
                 Visibility = Visibility.Hidden;
                 gameScreen.ShowDialog();

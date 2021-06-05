@@ -53,5 +53,10 @@ namespace TriviaGUI
             LAnswer1.Content = _questionData.OtherAnswers[2];
             LTimer.Text = _metadata.TimePerQuestion.ToString();
         }
+
+        private void GameScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _coms.leaveGameRequest();
+        }
     }
 }
