@@ -117,7 +117,18 @@ namespace TriviaGUI
                     this.Close();
 
                 }
-                updatePlayers(players);
+                else if (status == 2)
+                {
+                    timer.CancelAsync();
+                    GameScreen gameScreen = new GameScreen(_metadata, _coms);
+                    Visibility = Visibility.Hidden;
+                    gameScreen.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    updatePlayers(players);
+                }
             }
             catch (Exception e)
             {
