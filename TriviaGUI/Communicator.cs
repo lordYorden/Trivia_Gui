@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Windows;
 
 namespace TriviaGUI
 {
@@ -41,10 +42,18 @@ namespace TriviaGUI
 
         public messageInfo(String message)
         {
-            Code = Convert.ToInt32(message[0])-48;
-            int len = Convert.ToInt32(message.Substring(1, 4));
-            string jsonStr = message.Substring(5, len);
-            Json = JObject.Parse(jsonStr);
+            try
+            {
+                Code = Convert.ToInt32(message[0]) - 48;
+                int len = Convert.ToInt32(message.Substring(1, 4));
+                string jsonStr = message.Substring(5, len);
+                Json = JObject.Parse(jsonStr);
+            }
+            catch
+            {
+                MessageBox.Show("Diconected from server!");
+                Environment.Exit(0);
+            }
         }
 
         public int Code { get => code; set => code = value; }
@@ -201,11 +210,20 @@ namespace TriviaGUI
         }
         private string sendToServer(byte[] buffer)
         {
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
-            buffer = new byte[4096];
-            int bytesRead = clientStream.Read(buffer, 0, 4096);
-            return System.Text.Encoding.UTF8.GetString(buffer);
+            try
+            {
+                clientStream.Write(buffer, 0, buffer.Length);
+                clientStream.Flush();
+                buffer = new byte[4096];
+                int bytesRead = clientStream.Read(buffer, 0, 4096);
+                return System.Text.Encoding.UTF8.GetString(buffer);
+            }
+            catch
+            {
+                MessageBox.Show("Diconected from server!");
+                Environment.Exit(0);
+                return "bye";
+            }
         }
     }
     
