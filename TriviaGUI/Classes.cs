@@ -47,4 +47,18 @@ namespace TriviaGUI
         public string CorrectAnswer { get => correctAnswer; set => correctAnswer = value; }
         public List<string> OtherAnswers { get => otherAnswers; set => otherAnswers = value; }
     }
+
+    public class PlayerResults 
+    {
+        private string uname;
+        private string score;
+
+        public PlayerResults(string uname, string score)
+        {
+            this.uname = uname;
+            this.score = score;
+        }
+        public string Uname { get => uname; set => uname = value; }
+        public string Score { get => score; set => score = value; }
+    }
 }

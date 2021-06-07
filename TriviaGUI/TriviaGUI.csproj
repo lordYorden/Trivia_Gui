@@ -90,6 +90,9 @@
     <Compile Include="BestScoresScreen.xaml.cs">
       <DependentUpon>BestScoresScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameResultScreen.xaml.cs">
+      <DependentUpon>GameResultScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameScreen.xaml.cs">
       <DependentUpon>GameScreen.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <DependentUpon>WaitingRoomScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="BestScoresScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameResultScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,6 +246,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\timeCircleSample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\GameResultsLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

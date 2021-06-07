@@ -108,27 +108,31 @@ namespace TriviaGUI
 
         private void updateQuestion()
         {
-            if(_currQuestionCount > _metadata.QuestionCount)
+            if (_currQuestionCount > _metadata.QuestionCount)
             {
                 _timer.CancelAsync();
                 _hasGameStoped = true;
-                //to game ending screen
-                MessageBox.Show("Game has ended");
+                GameResultScreen gameResultScreen = new GameResultScreen(_coms);
+                Visibility = Visibility.Hidden;
+                gameResultScreen.ShowDialog();
+                this.Close();
             }
-
-            _questionData = Deserializer.desirializeQuestion(_coms.getQuestionRequest().Json);
-            LQuestionCount.Text = "Question " + _currQuestionCount;
-            _currQuestionCount++;
-            LQuestion.Text = _questionData.Question;
-            List<string> questions = new List<string>(_questionData.OtherAnswers);
-            questions.Add(_questionData.CorrectAnswer);
-            questions = questions.OrderBy(a => rng.Next()).ToList();
-            for (int i = 0; i < _bAnswers.Count; i++)
+            else
             {
-                _bAnswers[i].Content = questions[i];
+                _questionData = Deserializer.desirializeQuestion(_coms.getQuestionRequest().Json);
+                LQuestionCount.Text = "Question " + _currQuestionCount;
+                _currQuestionCount++;
+                LQuestion.Text = _questionData.Question;
+                List<string> questions = new List<string>(_questionData.OtherAnswers);
+                questions.Add(_questionData.CorrectAnswer);
+                questions = questions.OrderBy(a => rng.Next()).ToList();
+                for (int i = 0; i < _bAnswers.Count; i++)
+                {
+                    _bAnswers[i].Content = questions[i];
+                }
+                LTimer.Text = _metadata.TimePerQuestion.ToString();
+                _timer.RunWorkerAsync(_metadata.TimePerQuestion);
             }
-            LTimer.Text = _metadata.TimePerQuestion.ToString();
-            _timer.RunWorkerAsync(_metadata.TimePerQuestion);
         }
 
         private void submitAndGetNextQuestion(string ans, int ansTime)

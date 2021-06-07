@@ -38,13 +38,6 @@ namespace TriviaGUI
 
             }
         }
-
-        private void BTest_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-            
-        }
         private void AddScore(String name, String score) 
         {
             Style textStyle = this.FindResource("TextStyle") as Style;

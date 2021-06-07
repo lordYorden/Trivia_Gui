@@ -55,5 +55,17 @@ namespace TriviaGUI
 
             return new QuestionData(question, correctAnswer, otherAnswers);
         }
+
+        public static List<PlayerResults> desirializeGameResult(JObject json)
+        {
+            List<PlayerResults> playerRes = new List<PlayerResults>();
+            string[] results = json["results"].ToString().Split('-');
+            foreach (string res in results)
+            {
+                string[] data = res.Split('&');
+                playerRes.Add(new PlayerResults(data[0], data[data.Length - 1]));
+            }
+            return playerRes;
+        }
     }
 }
