@@ -67,14 +67,15 @@ namespace TriviaGUI
 
         private void displayCorrectAnswer() 
         {
-            string bName = "";
-            Style bStyle = null;
+            /*string bName = "";
+            Style bStyle = null;*/
             for (int i = 0; i < _bAnswers.Count; i++)
             {
                 if (_bAnswers[i].Content != _questionData.CorrectAnswer)
                 {
-                    bName = _bAnswers[i].Name;
-                    if (bName == "LAnswerRed")
+                    /*bName = _bAnswers[i].Name;*/
+                    _bAnswers[i].Opacity = 0.5;
+                    /*if (bName == "LAnswerRed")
                         bStyle = this.FindResource("RedWorngButtonStyle") as Style;
                     else if (bName == "LAnswerGreen")
                         bStyle = this.FindResource("GreenWorngButtonStyle") as Style;
@@ -82,7 +83,7 @@ namespace TriviaGUI
                         bStyle = this.FindResource("BlueWorngButtonStyle") as Style;
                     else
                         bStyle = this.FindResource("YellowWorngButtonStyle") as Style;
-                    _bAnswers[i].Style = bStyle;
+                    _bAnswers[i].Style = bStyle;*/
                 }
                 _bAnswers[i].IsHitTestVisible = false;
 
@@ -96,7 +97,21 @@ namespace TriviaGUI
 
         private void LAnswerRed_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("hI");
+            displayCorrectAnswer();
+        }
+
+        private void LAnswerGreen_Click(object sender, RoutedEventArgs e)
+        {
+            displayCorrectAnswer();
+        }
+
+        private void LAnswerYellow_Click(object sender, RoutedEventArgs e)
+        {
+            displayCorrectAnswer();
+        }
+
+        private void LAnswerBlue_Click(object sender, RoutedEventArgs e)
+        {
             displayCorrectAnswer();
         }
     }

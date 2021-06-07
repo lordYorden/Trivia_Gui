@@ -28,9 +28,9 @@
         <TextBlock x:Name="LTimer" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Right" Text="30" Margin="40,10" Foreground="White" Style="{DynamicResource TextStyle}"/>
 
         <Button x:Name="LAnswerRed" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="3" Style="{DynamicResource RedButtonStyle}" Click="LAnswerRed_Click"/>
-        <Button x:Name="LAnswerGreen" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Style="{DynamicResource GreenButtonStyle}"/>
-        <Button x:Name="LAnswerYellow" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="3" Grid.Column="1" Style="{DynamicResource YellowButtonStyle}"/>
-        <Button x:Name="LAnswerBlue" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Grid.Column="1" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="LAnswerGreen" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Style="{DynamicResource GreenButtonStyle}" Click="LAnswerGreen_Click"/>
+        <Button x:Name="LAnswerYellow" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="3" Grid.Column="1" Style="{DynamicResource YellowButtonStyle}" Click="LAnswerYellow_Click"/>
+        <Button x:Name="LAnswerBlue" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Grid.Column="1" Style="{DynamicResource BlueButtonStyle}" Click="LAnswerBlue_Click"/>
         
     </Grid>
 </Window>
