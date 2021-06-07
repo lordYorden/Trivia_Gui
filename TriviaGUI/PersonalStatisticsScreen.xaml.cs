@@ -32,10 +32,10 @@ namespace TriviaGUI
             else
             {
                 string[] stats = info.Json["Statistics"].ToString().Split('-');
-                IAVGTime.Text += stats[0];
-                ITotalCorrectAnswers.Text += stats[1];
-                ITotalAnswers.Text += stats[2];
-                ITimesPlayed.Text += stats[3];
+                DAvgAswerTime.Text = stats[0];
+                DTotalCorectAnswers.Text = stats[1];
+                DTotalAnswers.Text = stats[2];
+                DTimePlayed.Text = stats[3];
             }
         }
     }

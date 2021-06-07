@@ -23,7 +23,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBlock x:Name="IAVGTime" HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}" FontWeight="Bold" FontSize="24"/>
+            <TextBlock x:Name="IAvgTime" HorizontalAlignment="Left" Grid.Row="2" Text="Average Time To answer a question:" Margin="10" Style="{DynamicResource TextStyle}" FontWeight="Bold" FontSize="24"/>
             <TextBlock x:Name="DAvgAswerTime" HorizontalAlignment="Left" Grid.Row="1" Margin="10" Style="{DynamicResource TextStyle}"/>
         </StackPanel>
 

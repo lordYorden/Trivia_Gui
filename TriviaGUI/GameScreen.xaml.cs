@@ -28,6 +28,7 @@ namespace TriviaGUI
         private BackgroundWorker _timer = new BackgroundWorker();
         private BackgroundWorker _cooldown = new BackgroundWorker();
         private static Random rng = new Random();
+        private bool _hasGameStoped;
         public GameScreen(RoomData metadata, Communicator communicator)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace TriviaGUI
             _coms = communicator;
             _currQuestionCount = 1;
             _metadata = metadata;
+            _hasGameStoped = false;
             _bAnswers = new List<Button>();
             _bAnswers.Add(LAnswerRed);
             _bAnswers.Add(LAnswerGreen);
@@ -74,12 +76,15 @@ namespace TriviaGUI
 
         private void Timer_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (!e.Cancelled)
+            if (!_hasGameStoped)
             {
-                submitAndGetNextQuestion("", _metadata.TimePerQuestion);
+                if (!e.Cancelled)
+                {
+                    submitAndGetNextQuestion("", _metadata.TimePerQuestion);
+                }
+                displayCorrectAnswer();
+                _cooldown.RunWorkerAsync(2000);
             }
-            displayCorrectAnswer();
-            _cooldown.RunWorkerAsync(2000);
         }
 
         private void Timer_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -105,6 +110,8 @@ namespace TriviaGUI
         {
             if(_currQuestionCount > _metadata.QuestionCount)
             {
+                _timer.CancelAsync();
+                _hasGameStoped = true;
                 //to game ending screen
                 MessageBox.Show("Game has ended");
             }
@@ -194,6 +201,7 @@ namespace TriviaGUI
         private void GameScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _timer.CancelAsync();
+            _hasGameStoped = true;
             _coms.leaveGameRequest();
         }
 
