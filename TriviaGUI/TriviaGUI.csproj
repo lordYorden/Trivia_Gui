@@ -99,7 +99,7 @@
     <Compile Include="PersonalStatisticsScreen.xaml.cs">
       <DependentUpon>PersonalStatisticsScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Serializer.cs" />
+    <Compile Include="SerializerAndDeserializer.cs" />
     <Compile Include="RoomCreationScreen.xaml.cs">
       <DependentUpon>RoomCreationScreen.xaml</DependentUpon>
     </Compile>

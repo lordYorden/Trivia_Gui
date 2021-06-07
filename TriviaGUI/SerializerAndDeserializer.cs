@@ -43,4 +43,17 @@ namespace TriviaGUI
             return filled + toFill;
         }
     }
+
+    public static class Deserializer
+    {
+        public static QuestionData desirializeQuestion(JObject json) 
+        {
+            string question = json["question"].ToString();
+            List<string> otherAnswers = json["otherAnswers"].ToString().Split('&').ToList();
+            string correctAnswer = json["correctAnswer"].ToString();
+            int status = Convert.ToInt32(json["status"].ToString());
+
+            return new QuestionData(question, correctAnswer, otherAnswers);
+        }
+    }
 }

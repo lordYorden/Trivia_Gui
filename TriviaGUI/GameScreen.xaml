@@ -23,14 +23,14 @@
 
         <TextBlock x:Name="LQuestionCount" Grid.ColumnSpan="2" Margin="10" Text="Question ?" HorizontalAlignment="Center" FontSize="30" Foreground="White" Style="{DynamicResource TextStyle}"/>
         <TextBlock x:Name="LQuestion" Grid.ColumnSpan="2" Margin="30,10" Grid.Row="1" FontSize="30" FontWeight="ExtraLight" Foreground="White" LineHeight="45" Text="?" TextWrapping="Wrap" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
-        
+
         <Image x:Name="timeCircle" Grid.ColumnSpan="2" Grid.Row="2" Margin="20,5" HorizontalAlignment="Right" Source="assets/timeCircleSample.png" Stretch="None"/>
-        <TextBlock x:Name="LTimer" Grid.ColumnSpan="2" Grid.Row="2" HorizontalAlignment="Right" Text="30" Margin="40,10" Foreground="White" Style="{DynamicResource TextStyle}"/>
+        <TextBlock x:Name="LTimer" Grid.Row="2" HorizontalAlignment="Right" Text="999" Margin="0,35,30,37" Foreground="White" Style="{DynamicResource TextStyle}" TextAlignment="Center" Width="69.18" MaxWidth="69.18"  Grid.Column="1"/>
 
         <Button x:Name="LAnswerRed" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="3" Style="{DynamicResource RedButtonStyle}" Click="LAnswerRed_Click"/>
         <Button x:Name="LAnswerGreen" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Style="{DynamicResource GreenButtonStyle}" Click="LAnswerGreen_Click"/>
         <Button x:Name="LAnswerYellow" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="3" Grid.Column="1" Style="{DynamicResource YellowButtonStyle}" Click="LAnswerYellow_Click"/>
         <Button x:Name="LAnswerBlue" Margin="10" Content="" FontSize="30" Padding="5" FontWeight="Bold" Height="65" Width="380" Grid.Row="4" Grid.Column="1" Style="{DynamicResource BlueButtonStyle}" Click="LAnswerBlue_Click"/>
-        
+
     </Grid>
 </Window>
