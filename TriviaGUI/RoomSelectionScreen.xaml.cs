@@ -94,12 +94,6 @@ namespace TriviaGUI
 
             }
         }
-
-        private void BTest_Click(object sender, RoutedEventArgs e)
-        {
-            /*string roomName = "This A realy Long Name"; //Max room name length 22 cherecters
-            DisplayRooms.Children.Add(CreateRoom(roomName, ));*/
-        }
         private StackPanel CreateRoom(string roomName , RoomData metadata)
         {
             _roomNameToID.Add(roomName, metadata);
