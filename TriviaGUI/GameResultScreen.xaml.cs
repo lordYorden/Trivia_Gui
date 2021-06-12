@@ -26,17 +26,28 @@ namespace TriviaGUI
             InitializeComponent();
             _coms = communicator;
             _results = Deserializer.desirializeGameResult(_coms.getGameResultsRequest().Json);
+            _results.Sort(delegate (PlayerResults p1, PlayerResults p2)
+                {
+                    return Int32.Parse(p2.Score).CompareTo(Int32.Parse(p1.Score));
+                }
+            );
+                
+
+            
+            
             updateResults();
         }
 
         public void updateResults()
         {
-            for (int i = 0; i < _results.Count; i ++)
+            for (int i = 0; i < _results.Count; i++)
             {
-                addResult(i+1, _results[i].Uname, _results[i].Score);
+                addResult(i + 1, _results[i].Uname, _results[i].Score);
             }
+            
         }
-
+        
+        
         public void addResult(int place, string uname, string score)
         {
             /*<TextBlock Margin="10" Text="yarden" HorizontalAlignment="Left" FontSize="30" Style="{DynamicResource TextStyle}"/>*/
