@@ -12,7 +12,7 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/WaitingRoomLogo.png" Stretch="Uniform" />
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/GameResultsLogo.png" Stretch="Uniform" />
         <ScrollViewer Grid.Row="1">
             <Grid>
                 <Grid.ColumnDefinitions>
