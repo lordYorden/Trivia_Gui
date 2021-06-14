@@ -68,6 +68,8 @@ namespace TriviaGUI
             roomsData = roomsData.Substring(1, roomsData.Length - 2);
             /*MessageBox.Show(roomsData);*/
 
+            DisplayRooms.Children.Clear();
+            _roomNameToID.Clear();
             foreach (String roomData in roomsData.Split('-'))
             {
                 if (roomData != "")
@@ -88,11 +90,12 @@ namespace TriviaGUI
                     }
                     catch (Exception e)
                     {
-                        /*MessageBox.Show(e.Message);*/
+                        MessageBox.Show(e.Message);
                     }
                 }
 
             }
+            
         }
         private StackPanel CreateRoom(string roomName , RoomData metadata)
         {
