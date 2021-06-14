@@ -31,6 +31,7 @@ namespace TriviaGUI
         MT_GET_QUESTION_REQUEST = 15,
         MT_SUBMIT_ANSWER_REQUEST = 16,
         MT_GET_GAME_RESULT_REQUEST = 17,
+        MT_ADD_QUESTION = 18,
         MT_EXIT = 99,
         MT_ERROR = 1
     }

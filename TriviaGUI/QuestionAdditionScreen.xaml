@@ -1,0 +1,43 @@
+﻿<Window x:Class="TriviaGUI.QuestionAdditionScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TriviaGUI"
+        mc:Ignorable="d"
+        Title="Question Addition Screen" Height="500" Width="700" Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" Source="assets/AddQuestionLogo.png" Stretch="Uniform" />
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center" Text="Question:" FontSize="24" Style="{DynamicResource TextStyle}"/>
+            <TextBox x:Name="IQuestion" Margin="10" VerticalAlignment="Bottom" Width="483" MaxWidth="483" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center" Text="Correct Answer:" FontSize="24" Style="{DynamicResource TextStyle}" FontWeight="Bold"/>
+            <TextBox x:Name="ICorrectAns" Margin="10" Width="350" MaxWidth="350" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center" Text="Other Answer:" FontSize="24" Style="{DynamicResource TextStyle}" FontWeight="Bold"/>
+            <TextBox x:Name="ISecAns" Margin="10" VerticalAlignment="Bottom" Width="390" MaxWidth="390" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center" Text="Other Answer:" FontSize="24" Style="{DynamicResource TextStyle}" FontWeight="Bold"/>
+            <TextBox x:Name="IThirdAns" Margin="10" VerticalAlignment="Bottom" Width="390" MaxWidth="390" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" VerticalAlignment="Center">
+            <TextBlock Margin="10" VerticalAlignment="Center" Text="Other Answer:" FontSize="24" Style="{DynamicResource TextStyle}" FontWeight="Bold"/>
+            <TextBox x:Name="IFourthAns" Margin="10" VerticalAlignment="Bottom" Width="390" MaxWidth="390" Height="45" TextAlignment="Left" VerticalContentAlignment="Center" FontSize="24" FontFamily="/TriviaGUI;component/fonts/#04b 30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" SelectionBrush="{x:Null}" CaretBrush="#FF0078D7"/>
+        </StackPanel>
+        <Button x:Name="BSubmit" HorizontalAlignment="Center" Margin="10" FontSize="24" Content="Submit Question" Padding="20,0,20,0" Grid.Row="6" Style="{DynamicResource BlueButtonStyle}" Click="BSubmit_Click"/>
+    </Grid>
+</Window>
