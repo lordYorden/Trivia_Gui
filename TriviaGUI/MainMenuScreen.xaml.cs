@@ -72,5 +72,13 @@ namespace TriviaGUI
         {
             this.Close();
         }
+
+        private void BSubmitQuestion_Click(object sender, RoutedEventArgs e)
+        {
+            QuestionAdditionScreen questionAdditionScreen = new QuestionAdditionScreen(_coms);
+            Visibility = Visibility.Hidden;
+            questionAdditionScreen.ShowDialog();
+            Visibility = Visibility.Visible;
+        }
     }
 }
