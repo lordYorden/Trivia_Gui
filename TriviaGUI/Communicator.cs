@@ -65,6 +65,7 @@ namespace TriviaGUI
         private NetworkStream clientStream;
         private TcpClient client;
         private IPEndPoint ipend;
+
         public Communicator()
         {
             this.client = new TcpClient();
@@ -72,6 +73,20 @@ namespace TriviaGUI
             client.Connect(this.ipend);
             this.clientStream = this.client.GetStream();
 
+
+        }
+        public messageInfo submitAnswer(string q, string correct, string ans2, string ans3, string ans4)
+        {
+            JObject o = new JObject
+            {
+                {"Question",q },
+                {"CorrectAns",correct },
+                {"SecAns",ans2 },
+                {"ThirdAns",ans3 },
+                {"FourthAns",ans4 }
+            };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_ADD_QUESTION, o));
+            return new messageInfo(sendToServer(buffer));
 
         }
         public messageInfo loginRequest(string name, string password)
@@ -83,12 +98,13 @@ namespace TriviaGUI
             };
 
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LOGIN_REQUEST, o));
-           
-           return new messageInfo(sendToServer(buffer));
+
+            return new messageInfo(sendToServer(buffer));
 
 
         }
-        public messageInfo signUpRequest(string name, string password,string email)
+
+        public messageInfo signUpRequest(string name, string password, string email)
         {
             JObject o = new JObject
             {
@@ -180,7 +196,7 @@ namespace TriviaGUI
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
             return new messageInfo(sendToServer(buffer));
         }
-        public messageInfo submitAnswerRequest(string answer,int answerTime)
+        public messageInfo submitAnswerRequest(string answer, int answerTime)
         {
             JObject o = new JObject
             {
@@ -209,6 +225,7 @@ namespace TriviaGUI
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_GAME_RESULT_REQUEST, o)); //sending code only
             return new messageInfo(sendToServer(buffer));
         }
+        
         private string sendToServer(byte[] buffer)
         {
             try

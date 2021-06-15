@@ -28,7 +28,7 @@ namespace TriviaGUI
 
         private void BSubmit_Click(object sender, RoutedEventArgs e)
         {
-            /*messageInfo info = _coms.addNewQuestionRequest(IQuestion.Text, ICorrectAns.Text, ISecAns.Text, IThirdAns.Text, IFourthAns.Text);
+            messageInfo info = _coms.submitAnswer(IQuestion.Text, ICorrectAns.Text, ISecAns.Text, IThirdAns.Text, IFourthAns.Text);
             if (info.Code == 1)
             {
                 MessageBox.Show(info.Json.ToString());
@@ -36,7 +36,7 @@ namespace TriviaGUI
             else
             {
                 MessageBox.Show("Your question Has Been Submited!");
-            }*/
+            }
         }
     }
 }
