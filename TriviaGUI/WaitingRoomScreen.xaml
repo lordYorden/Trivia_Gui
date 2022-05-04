@@ -25,6 +25,6 @@
         <ScrollViewer Grid.Row="4">
             <TextBlock x:Name="LPlayers" Margin="10" FontSize="30" FontWeight="ExtraLight" LineHeight="45" Text="Players: " TextWrapping="Wrap" VerticalAlignment="top" Style="{DynamicResource TextStyle}"/>
         </ScrollViewer>
-        <Button x:Name="BStart" Grid.Row="5" HorizontalAlignment="Center" Padding="20,0,20,0" Margin="10" Content="Start Game" FontSize="24" Style="{DynamicResource BlueButtonStyle}"/>
+        <Button x:Name="BStart" Grid.Row="5" HorizontalAlignment="Center" Padding="20,0,20,0" Margin="10" Content="Start Game" FontSize="24" Style="{DynamicResource BlueButtonStyle}" Click="BStart_Click"/>
     </Grid>
 </Window>

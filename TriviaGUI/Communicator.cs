@@ -26,9 +26,13 @@ namespace TriviaGUI
         MT_START_GAME = 11,
         MT_LEAVE_ROOM = 12,
         MT_GET_ROOM_STATE = 13,
+        MT_LEAVE_GAME_REQUEST = 14,
+        MT_GET_QUESTION_REQUEST = 15,
+        MT_SUBMIT_ANSWER_REQUEST = 16,
+        MT_GET_GAME_RESULT_REQUEST = 17,
         MT_EXIT = 99,
-        MT_ERROR = 99
-    };
+        MT_ERROR = 1
+    }
 
     public class messageInfo 
     {
@@ -164,6 +168,35 @@ namespace TriviaGUI
         {
             JObject o = new JObject { };
             byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_ROOM_STATE, o)); //sending code only
+            return new messageInfo(sendToServer(buffer));
+        }
+        public messageInfo submitAnswerRequest(string answer,int answerTime)
+        {
+            JObject o = new JObject
+            {
+                {"answer",answer },
+                {"answerTime",answerTime }
+            };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_SUBMIT_ANSWER_REQUEST, o)); //sending code only
+            return new messageInfo(sendToServer(buffer));
+
+        }
+        public messageInfo getQuestionRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_QUESTION_REQUEST, o)); //sending code only
+            return new messageInfo(sendToServer(buffer));
+        }
+        public messageInfo leaveGameRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_LEAVE_GAME_REQUEST, o)); //sending code only
+            return new messageInfo(sendToServer(buffer));
+        }
+        public messageInfo getGameResultsRequest()
+        {
+            JObject o = new JObject { };
+            byte[] buffer = new ASCIIEncoding().GetBytes(Serializer.serializeResponse((int)RequestId.MT_GET_GAME_RESULT_REQUEST, o)); //sending code only
             return new messageInfo(sendToServer(buffer));
         }
         private string sendToServer(byte[] buffer)
